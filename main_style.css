@@ -30,16 +30,19 @@ main {
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-auto-rows: auto; /* allow row height to adjust based on tallest card */
   gap: 40px;
   justify-items: center;
+  align-items: start;
 }
 
+/* Headings in projects */
 #projects h2,
 .project h3,
 .project h4 {
-  grid-column: 1 / -1;  /* span from first to last column */
-  text-align: left;     /* optional: align text to left */
-  margin-bottom: 20px;  /* spacing below heading */
+  grid-column: 1 / -1;  /* span full width of grid */
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 
@@ -66,18 +69,20 @@ section {
   border-bottom: 1px solid #ddd;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* push content to bottom */
+  height: 100%; /* allow grid to make all same height */
 }
 
 .project img {
   width: 100%;
   max-width: 700px;
-
-  height: auto;
-
+  max-height: 300px;
+  object-fit: cover;
   display: block;
   margin: 0 auto 15px auto;
-
   border: 1px solid #ccc;
 }
 
@@ -92,9 +97,9 @@ section {
 
 .project-images img {
   width: 100%;
-  height: auto;
-
-  border: 1px solid #ccc;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
 
