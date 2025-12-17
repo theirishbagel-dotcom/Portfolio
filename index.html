@@ -27,7 +27,7 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <img src="images/profile-picture.jpg" alt="Profile Picture">
+    <img class="zoomable" src="images/profile-picture.jpg" alt="Profile Picture">
 
     <p>
       I am a recent GIS graduate from Texas State University with experience in
@@ -42,43 +42,67 @@
     <h2>Featured GIS Projects</h2>
 
     <div class="project">
-      <img src="Snail_habitat_suitability.jpg" alt="Energy Suitability Map">
-      <h3>Renewable Energy Suitability Analysis</h3>
-      <p>
-        Multi-criteria suitability model evaluating land use, slope,
-        and infrastructure proximity to identify optimal energy sites.
-      </p>
-      <a href="project-pages/energy.html">View Project Details</a>
+    <div class="project-images">
+      <img class="zoomable" src="js/images/maps/web_map_preview.png" alt="Interactive Web Map">
     </div>
-
-    <div class="project">
-      <img src="images/maps/crime_analysis.jpg" alt="Crime Analysis Map">
-      <h3>Spatial Crime Pattern Analysis</h3>
-      <p>
-        Hotspot and proximity analysis of violent crime rates using
-        census and municipal datasets.
-      </p>
-      <a href="project-pages/crime.html">View Project Details</a>
-    </div>
-
-    <div class="project">
-      <img src="images/maps/webmap_preview.jpg" alt="Interactive Web Map">
       <h3>Interactive Web Mapping Application</h3>
       <p>
-        Leaflet-based web map featuring geocoding, custom popups,
+        ArcGIS JS API based web map featuring buffer analysis, custom popups,
         and user interaction.
       </p>
-      <a href="#webmap">View Live Map</a>
+      <a href="https://austin-tourism-committee.github.io/Project/" target="_blank" rel="noopener noreferrer">
+        View Live Map
+      </a>
     </div>
+
+    <div class="project">
+    <div class="project-images">
+      <img class="zoomable" src="js/images/maps/snail_habitat_suitability.jpg" alt="Snail Habitat Suitability Analysis">
+      <img class="zoomable" src="js/images/maps/combined_suitability_analysis.jpg" alt="Combined Suitability Analysis">
+    </div>
+    <h3>Suitability Analysis</h3>
+    <p>
+      Multi-criteria suitability models evaluating land use, slope,
+      and infrastructure proximity buffers to identify optimal sites for different subjects.
+    </p>
+  </div>
+
+
+    <div class="project">
+    <div class="project-images">
+      <img class="zoomable" src="js/images/maps/surface_modeling.jpg" alt="Crime Analysis Map">
+      <img class="zoomable" src="js/images/maps/hydro_modeling.jpg" alt="Crime Analysis Map">
+    </div>
+      <h3>Modeling</h3>
+      <p>
+      Surface modeling of proposed cell tower sites to estimate coverage areas, leveraging DEMs and shaded relief data,
+      with hydrological modeling included to understand water movement and environmental considerations.
+      </p>
+    </div>
+
+
+    <div class="project">
+    <div class="project-images">
+      <img class="zoomable" src="js/images/maps/2018_theft_hs.jpg" alt="Crime Analysis Map">
+      <img class="zoomable" src="js/images/maps/crimedensity2018.jpg" alt="Crime Analysis Map">
+
+    </div>
+      <h3>Spatial Crime Pattern Analysis</h3>
+      <p>
+        Hotspot and density analysis of violent crime rates using
+        census and municipal datasets.
+      </p>
+    </div>
+
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
     <h2>Technical Skills</h2>
     <ul>
-      <li><strong>GIS:</strong> ArcGIS Pro, ArcGIS Online, QGIS</li>
-      <li><strong>Analysis:</strong> Suitability Modeling, IDW, RBF, Buffering</li>
-      <li><strong>Web GIS:</strong> Leaflet, Mapbox, ArcGIS JS API</li>
+      <li><strong>GIS:</strong> ArcGIS Pro, ArcGIS Online, ESRI Model Builder</li>
+      <li><strong>Analysis:</strong> Suitability Modeling, Surface Modeling, Interpolation, Buffer</li>
+      <li><strong>Web GIS:</strong> Leaflet, OpenStreet, ArcGIS JS API</li>
       <li><strong>Programming:</strong> JavaScript, HTML, CSS</li>
       <li><strong>Data:</strong> Census, Environmental, Raster & Vector</li>
     </ul>
@@ -100,5 +124,28 @@
   <p>© 2025 Parker Cook</p>
 </footer>
 
+<div id="lightbox-overlay">
+  <img src="" alt="Expanded Image">
+</div>
+<script>
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxImage = lightboxOverlay.querySelector('img');
+
+  // Open lightbox when clicking a zoomable image
+  document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;  // use same image; optionally link to higher-res version
+      lightboxOverlay.style.display = 'flex';
+    });
+  });
+
+  // Close lightbox when clicking overlay
+  lightboxOverlay.addEventListener('click', () => {
+    lightboxOverlay.style.display = 'none';
+    lightboxImage.src = '';
+  });
+</script>
+
 </body>
+
 </html>
